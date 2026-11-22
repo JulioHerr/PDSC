@@ -3,20 +3,117 @@ layout: tres-columnas
 title: Actas de reuniones
 ---
 
+<style>
+  .timeline {
+    display: flex;
+    position: relative;
+    margin: 2rem 0;
+    min-height: 15rem;
+  }
+  .evento {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    outline: none;
+  }
+  /* tramo de línea de cada evento */
+  .evento::before {
+    content: "";
+    position: absolute;
+    top: calc(2rem + 7.5px);
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #2b2b2b;
+  }
+  .evento:first-child::before { left: 50%; }
+  .evento:last-child::before { right: 50%; }
+
+  .fecha {
+    display: block;
+    height: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+  .punto {
+    display: block;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    margin: 0.5rem auto 0;
+    border: 3px solid #2b2b2b;
+    border-radius: 50%;
+    background: #b9573f;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .evento:hover .punto,
+  .evento:focus .punto {
+    transform: scale(1.4);
+    background: #c9654b;
+  }
+
+  .acta {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    padding: 0.8rem 1rem;
+    background: #fff7ec;
+    border: 3px solid #2b2b2b;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 0.85rem;
+    z-index: 10;
+  }
+  .evento:hover .acta,
+  .evento:focus .acta { display: block; }
+  .evento:first-child .acta { left: 0; transform: none; }
+  .evento:last-child .acta { left: auto; right: 0; transform: none; }
+</style>
+
 <h1>Actas de reuniones</h1>
+<p>Pasa el ratón por encima de cada punto para ver el acta.</p>
 
-<h2>Reunión 1 - dd/mm/aaaa</h2>
-<ul>
-  <li><strong>Asistentes:</strong> Miembro 1, Miembro 2, Miembro 3</li>
-  <li><strong>Temas tratados:</strong> ...</li>
-  <li><strong>Acuerdos:</strong> ...</li>
-</ul>
+<div class="timeline">
 
-<h2>Reunión 2 - dd/mm/aaaa</h2>
-<ul>
-  <li><strong>Asistentes:</strong> ...</li>
-  <li><strong>Temas tratados:</strong> ...</li>
-  <li><strong>Acuerdos:</strong> ...</li>
-</ul>
+  <div class="evento" tabindex="0">
+    <span class="fecha">dd/mm</span>
+    <span class="punto"></span>
+    <div class="acta">
+      <strong>Reunión 1 - dd/mm/aaaa</strong><br>
+      <strong>Asistentes:</strong> Miembro 1, Miembro 2<br>
+      <strong>Temas:</strong> ...<br>
+      <strong>Acuerdos:</strong> ...
+    </div>
+  </div>
+
+  <div class="evento" tabindex="0">
+    <span class="fecha">dd/mm</span>
+    <span class="punto"></span>
+    <div class="acta">
+      <strong>Reunión 2 - dd/mm/aaaa</strong><br>
+      <strong>Asistentes:</strong> Miembro 1, Miembro 2<br>
+      <strong>Temas:</strong> ...<br>
+      <strong>Acuerdos:</strong> ...
+    </div>
+  </div>
+
+  <div class="evento" tabindex="0">
+    <span class="fecha">dd/mm</span>
+    <span class="punto"></span>
+    <div class="acta">
+      <strong>Reunión 3 - dd/mm/aaaa</strong><br>
+      <strong>Asistentes:</strong> Miembro 1, Miembro 2<br>
+      <strong>Temas:</strong> ...<br>
+      <strong>Acuerdos:</strong> ...
+    </div>
+  </div>
+
+</div>
 
 <a href="{{ '/' | relative_url }}" class="btn">Volver</a>
