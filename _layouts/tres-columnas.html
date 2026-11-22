@@ -1,6 +1,26 @@
 ---
 layout: default
 ---
+<style>
+  .lateral {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 20vw;
+    padding: 5rem 1rem 1rem;
+    overflow-y: auto;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+  }
+  .lateral.izq { left: 0; }
+  .lateral.der { right: 0; }
+  .lateral pre { white-space: pre-wrap; font-size: 0.72rem; }
+
+  @media (max-width: 1350px) {
+    .lateral { position: static; width: auto; padding: 0; }
+  }
+</style>
+
 <aside class="lateral izq">{% include planificacion.html %}</aside>
 <aside class="lateral der">{% include patrones.html %}</aside>
 {{ content }}
